@@ -9,8 +9,8 @@ function ChangeAlert({ sincronize }) {
     return (
       <div className="ChangeAlert-bg">
         <div className="ChangeAlert-container">
-          <p>Parece que cambiaste tus TODOs en otra pestaña o ventana del navegador.</p>
-          <p>¿Quieres sincronizar tus TODOs?</p>
+          <p>Parece que modificaste tu lista de tareas en otra pestaña o ventana del navegador.</p>
+          <p>¿Quieres sincronizar tus tareas?</p>
           <button
             className="TodoForm-button TodoForm-button--add"
             onClick={toggleShow}
