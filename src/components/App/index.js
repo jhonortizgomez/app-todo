@@ -1,37 +1,42 @@
-import React from 'react';
-import { useTodos } from './useTodos';
-import { TodoHeader } from '../TodoHeader';
-import { TodoCounter } from '../TodoCounter';
-import { TodoSearch } from '../TodoSearch';
-import { TodoList } from '../TodoList';
-import { TodoItem } from '../TodoItem';
-import { TodosError } from '../TodosError';
-import { TodosLoading } from '../TodosLoading';
-import { EmptyTodos } from '../EmptyTodos';
-import { TodoForm } from '../TodoForm';
-import { CreateTodoButton } from '../CreateTodoButton';
-import { Modal } from '../Modal';
-import { ChangeAlert } from '../ChangeAlert';
+import React from "react";
+import { useTodos } from "./useTodos";
+import { TodoHeader } from "../TodoHeader";
+import { TodoCounter } from "../TodoCounter";
+import { TodoSearch } from "../TodoSearch";
+import { TodoList } from "../TodoList";
+import { TodoItem } from "../TodoItem";
+import { TodosError } from "../TodosError";
+import { TodosLoading } from "../TodosLoading";
+import { EmptyTodos } from "../EmptyTodos";
+import { TodoForm } from "../TodoForm";
+import { CreateTodoButton } from "../CreateTodoButton";
+import { Modal } from "../Modal";
+import { ChangeAlert } from "../ChangeAlert";
 
 function App() {
+  const { state, stateUpdaters } = useTodos();
+
   const {
     error,
     loading,
     searchedTodos,
-    completeTodo,
-    deleteTodo,
-    openModal,
-    setOpenModal,
     totalTodos,
+    completeTodo,
     completedTodos,
+    openModal,
     searchValue,
-    setSearchValue,
+  } = state;
+
+  const {
+    setOpenModal,
     addTodo,
+    deleteTodo,
+    setSearchValue,
     sincronizeTodos,
-  } = useTodos();
+  } = stateUpdaters;
   
   return (
-    <>
+    <React.Fragment>
       <TodoHeader loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
@@ -83,7 +88,7 @@ function App() {
       <ChangeAlert
         sincronize={sincronizeTodos}
       />
-    </>
+    </React.Fragment>
   );
 }
 

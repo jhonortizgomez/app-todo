@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLocalStorage } from './useLocalStorage';
+import React from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
 function useTodos() {
   const {
@@ -50,21 +50,26 @@ function useTodos() {
     saveTodos(newTodos);
   };
   
-  return {
+  const state = {
     loading,
     error,
     totalTodos,
     completedTodos,
     searchValue,
-    setSearchValue,
     searchedTodos,
+    openModal,
+  };
+  
+  const stateUpdaters = {
+    setSearchValue,
     addTodo,
     completeTodo,
     deleteTodo,
-    openModal,
     setOpenModal,
     sincronizeTodos,
   };
+
+  return { state, stateUpdaters };
 }
 
 export { useTodos };
